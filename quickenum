@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Created 7/19/2021 by Nick Tutterow
+#
+# For first time setup, run
+# chmod +x quickenum
+#
+# Usage:
+#
+# ./quickenum example.com
+
+domain=$1
+
+curl $domain > quickenum_curl.txt
+nmap -sC -sV $domain > quickenum_nmap.txt
+dirb $URL /usr/share/wordlists/dirb/common.txt > quickenum_dirb.txt
