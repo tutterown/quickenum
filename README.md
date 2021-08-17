@@ -20,4 +20,4 @@ quickenum_nmap.txt
 quickenum_dirb.txt
 ```
 
-You can then `cat` each file to view the results. Recommended best practice is to run this script inside of a file dedicated to the target so they are all organized under the appropriate target. 
+You can then `cat` each file to view the results. Recommended best practice is to run this script inside of a folder dedicated to the target so they are all organized under the appropriate target. 
