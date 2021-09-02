@@ -13,4 +13,4 @@ domain=$1
 
 curl $domain > quickenum_curl.txt
 nmap -sC -sV $domain > quickenum_nmap.txt
-dirb $URL /usr/share/wordlists/dirb/common.txt > quickenum_dirb.txt
+dirb http://$domain /usr/share/wordlists/dirb/common.txt > quickenum_dirb.txt
