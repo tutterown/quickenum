@@ -8,9 +8,15 @@
 # Usage:
 #
 # ./quickenum example.com
+#
+#
+# Change the paths to the wordlists as necessary
+
 
 domain=$1
 
 curl $domain > quickenum_curl.txt
 nmap -sC -sV $domain > quickenum_nmap.txt
 dirb http://$domain /usr/share/wordlists/dirb/common.txt > quickenum_dirb.txt
+ffuf -c -w ~/git_repos/WordLists/Subdomain.txt -u http://$domain/ -H "Host: FUZZ.$domain" -mc 200 > quickenum_subdomains.txt
+
