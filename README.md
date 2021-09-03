@@ -1,5 +1,5 @@
 # quickenum
-Script to automate normal enumeration steps.
+Script to automate standard enumeration steps.
 It will run the following commands:  
  ```
  curl example.com > quickenum_curl.txt  
