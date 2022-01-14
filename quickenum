@@ -15,8 +15,32 @@
 
 domain=$1
 
+echo "To scan for UDP ports, sudo is required"
+echo "Run again as sudo with `sudo !!`"
+
 curl $domain > quickenum_curl.txt
 nmap -sC -sV $domain > quickenum_nmap.txt
-dirb http://$domain /usr/share/wordlists/dirb/common.txt > quickenum_dirb.txt
-ffuf -c -w ~/git_repos/WordLists/Subdomain.txt -u http://$domain/ -H "Host: FUZZ.$domain" -mc 200 > quickenum_subdomains.txt
+dirb http://$domain /usr/share/wordlists/dirb/common.txt > quickenum_dirb.txt #Add your preferred wordlist
+ffuf -c -w ~/git_repos/WordLists/Subdomain.txt -u http://$domain/ -H "Host: FUZZ.$domain" -mc 200 > quickenum_subdomains.txt #Add your preferred wordlist
 
+# TL;DR
+
+echo "Quick TL;DR"
+
+echo "Open ports:"
+echo ""
+
+nmap $domain | grep tcp
+nmap -sU $domain | grep udp
+
+echo -e "\nFound directories and subdomains\n"
+
+cat quickenum_dirb.txt | grep "CODE:200"
+cat quickenum_subdomains.txt | grep "Status: 200"
+
+echo ""
+echo "For a more in depth look at what was found, open each of the following files: "
+echo "quickenum_curl.txt"
+echo "quickenum_nmap.txt"
+echo "quickenum_dirb.txt"
+echo "quickenum_subdomains.txt"
