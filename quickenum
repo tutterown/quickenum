@@ -16,7 +16,6 @@
 domain=$1
 
 echo "To scan for UDP ports, sudo is required"
-echo "Run again as sudo with `sudo !!`"
 
 curl $domain > quickenum_curl.txt
 nmap -sC -sV $domain > quickenum_nmap.txt
